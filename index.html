@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NeVeR</title>
+    </head>
+    <body>
+        <div id="note_list_div">
+            <ul id="note_list"> 
+
+            </ul>
+        </div>
+        <script>
+            function invoke(arg) {window.external.invoke(JSON.stringify(arg));};
+            function update_note_list(note_names) {
+                var ul = document.createDocumentFragment();
+                note_names.forEach(note_name => {
+                    var li = document.createElement('li');
+                    li.textContent = note_name;
+                    ul.appendChild(li);
+                });
+                var container = document.getElementById("note_list");
+                container.innerHTML='';
+                container.appendChild(ul);
+            };
+            invoke({"type": "update"});
+        </script>
+    </body>
+</html>
