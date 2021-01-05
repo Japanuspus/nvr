@@ -2,12 +2,13 @@
 <html>
     <head>
         <title>NeVeR</title>
+        <style>
+            .note_list li.focus {border: thin dotted blue;}
+        </style>
     </head>
     <body>
-        <div id="note_list_div">
-            <ul id="note_list"> 
-
-            </ul>
+        <div id="note_list_div" class="note_list">
+            <ul id="note_list" tabindex="0"></ul>
         </div>
         <script>
             function invoke(arg) {window.external.invoke(JSON.stringify(arg));};
@@ -16,6 +17,7 @@
                 note_names.forEach(note_name => {
                     var li = document.createElement('li');
                     li.textContent = note_name;
+                    li.tabIndex = -1;
                     ul.appendChild(li);
                 });
                 var container = document.getElementById("note_list");
