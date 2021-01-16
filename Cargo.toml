@@ -10,3 +10,4 @@ edition = "2018"
 web-view = { version = "0.6", features = ["edge"] }
 anyhow = "1.0"
 serde_json = "1.0"
+pulldown-cmark = "0.8"
