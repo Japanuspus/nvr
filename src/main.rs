@@ -53,7 +53,13 @@ fn handle(wv: &mut WebView<NoteProvider>, arg: &str) -> Result<(), web_view::Err
     }
 }
 
-const HTML_CONTENT: &str = include_str!("../index.html");
+fn html_content() -> String {
+    format!(
+        include_str!("../app/index.html"),
+        script=include_str!("../app/app.js"),
+        style=include_str!("../app/app.css"),
+    )
+}
 
 fn main() -> Result<()> {
     let note_folder = PathBuf::from("./notes");
@@ -65,7 +71,7 @@ fn main() -> Result<()> {
 
     web_view::builder()
         .title("NeVeR")
-        .content(Content::Html(HTML_CONTENT))
+        .content(Content::Html(&html_content()))
         .size(320, 480)
         .resizable(true)
         .debug(true)
